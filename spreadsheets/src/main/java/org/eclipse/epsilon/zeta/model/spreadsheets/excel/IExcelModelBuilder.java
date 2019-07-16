@@ -22,7 +22,6 @@ import org.eclipse.epsilon.zeta.model.spreadsheets.ISpreadsheetModelBuilder;
  * 
  * @author Horacio Hoyos Rodriguez
  * @author Beatriz Sanchez Piña
- * @since 1.6
  *
  * @param <T>
  */

@@ -35,9 +35,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 
 /**
  * Set of utility methods for working with EMF models.
- * @author Horacio Hoyos Rodriguez
- * @since 1.6
  *
+ * @author Horacio Hoyos Rodriguez
  */
 public class EmfModelAssistant {
 

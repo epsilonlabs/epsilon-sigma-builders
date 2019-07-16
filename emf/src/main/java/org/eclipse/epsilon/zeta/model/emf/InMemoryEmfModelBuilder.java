@@ -22,7 +22,6 @@ import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
  * 
  * @author Horacio Hoyos Rodriguez
  * @author Beatriz Sanchez Piña
- * @since 1.6
  */
 public class InMemoryEmfModelBuilder extends AbstractEmfModelBuilder<InMemoryEmfModel, InMemoryEmfModelBuilder>
 	implements IInMemoryEmfModelBuilder<InMemoryEmfModel, InMemoryEmfModelBuilder> {

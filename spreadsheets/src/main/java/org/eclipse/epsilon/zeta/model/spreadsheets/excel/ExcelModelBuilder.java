@@ -20,10 +20,9 @@ import org.eclipse.epsilon.zeta.model.spreadsheets.SpreadsheetModelBuilder;
 
 /**
  * Implementation of {@link IExcelModelBuilder}
+ *
  * @author Horacio Hoyos Rodriguez
  * @author Beatriz Sanchez Piña
- * @since 1.6
- *
  */
 public class ExcelModelBuilder extends SpreadsheetModelBuilder<ExcelModel, ExcelModelBuilder>
 		implements IExcelModelBuilder<ExcelModelBuilder> {

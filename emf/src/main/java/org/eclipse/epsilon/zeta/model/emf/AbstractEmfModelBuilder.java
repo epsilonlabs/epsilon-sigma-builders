@@ -20,7 +20,6 @@ import org.eclipse.epsilon.zeta.model.ICachedModelBuilder;
  *
  * @author Horacio Hoyos Rodriguez
  * @author Beatriz Sanchez Piña
- * @since 1.6
  */
 public abstract class AbstractEmfModelBuilder<M extends EmfModel, T extends AbstractEmfModelBuilder<M, T>>
         extends CachedModelBuilder<M, T> implements ICachedModelBuilder<M, T> {

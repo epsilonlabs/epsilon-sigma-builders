@@ -21,7 +21,6 @@ import java.nio.file.Path;
  *
  * @author Horacio Hoyos Rodriguez
  * @author Beatriz Sanchez Piña
- * @since 1.6
  */
 public interface IEmfModelBuilder<M extends EmfModel, T extends IEmfModelBuilder<M, T>> extends ICachedModelBuilder<M, T> {
 

@@ -17,11 +17,10 @@ import java.util.List;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 
 /**
- * Implementaiton of the Emf Model Builder. By default metamodels are reused (@see {@link #reuseMetamodels}).
+ * Implementation of the Emf Model Builder. By default metamodels are reused (@see {@link #reuseMetamodels}).
  *
  * @author Horacio Hoyos Rodriguez
  * @author Beatriz Sanchez Piña
- * @since 1.6
  */
 public class EmfModelBuilder extends AbstractEmfModelBuilder<EmfModel, EmfModelBuilder>
             implements IEmfModelBuilder<EmfModel, EmfModelBuilder> {
