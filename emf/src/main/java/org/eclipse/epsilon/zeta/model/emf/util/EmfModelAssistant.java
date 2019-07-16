@@ -274,7 +274,6 @@ public class EmfModelAssistant {
 	/**
 	 * Register the EPackage and its nested packages in the given EPackage.Registry
 	 * @param ep					The EPackage
-	 * @param registry				The Registry
 	 */
 	public static void registerEPackageGlobally(EPackage ep) {
 		org.eclipse.emf.ecore.EPackage.Registry.INSTANCE.put(ep.getNsURI(), ep);
