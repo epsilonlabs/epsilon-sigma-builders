@@ -34,7 +34,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 
 
 /**
- * Set of utility methods for working with EMF models.
+ * Set of utility methods for registering Metamodels and factories. Registering these assets is required task for
+ * Java applications in non-eclipse environments.
  *
  * @author Horacio Hoyos Rodriguez
  */

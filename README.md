@@ -1,6 +1,14 @@
 # Zeta
 Zeta provides a Model Builder API to ease configuration and creation of models used by Epsilon scripts when running in non-eclipse environments.
 
+
+## Supported versions
+
+epsilon-sigma-executors | Epsilon   | 
+------------------------|-----------|
+2.0.0                   | 1.6.x     |
+1.0.0                   | 1.5.x     |
+
 ## Installation
 
 The easiest way is to add a maven depedendency to your project's pom:
@@ -8,23 +16,23 @@ The easiest way is to add a maven depedendency to your project's pom:
 ```
 <dependencies>
 	<dependency>
-   		<groupId>org.eclipse.epsilon</groupId>
+   		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>zeta-core</artifactId>
 		<version>1.2.0</version>
 	</dependency>
 	<!-- Add specific model builders as required -->
 	<dependency>
-   		<groupId>org.eclipse.epsilon</groupId>
+   		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>zeta-emf</artifactId>
 		<version>1.2.0</version>
 	</dependency>
 	<dependency>
-   		<groupId>org.eclipse.epsilon</groupId>
+   		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>zeta-simulink</artifactId>
 		<version>1.2.0</version>
 	</dependency>
 	<dependency>
-   		<groupId>org.eclipse.epsilon</groupId>
+   		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>zeta-spreadsheets</artifactId>
 		<version>1.2.0</version>
 	</dependency>
@@ -80,6 +88,10 @@ IModel modelA = new EmfModelBuilder()
 ```
 Later, you can add *modelA* to the models used by an Epsilon engine.
 Look at [Epsilon-Executors](https://github.com/epsilonlabs/Epsilon-Executors) for a related API that can be used to run Epsilon scripts from non-eclipse environments.
+
+## Using the builders
+
+Our Wiki provides detailed information on how to use the different builders.
 
 ## Developing a new builder
 
