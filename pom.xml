@@ -19,7 +19,7 @@
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Zeta provides a Model Builder API to ease configuration and creation of models used by Epsilon scripts</description>
-  <url>https://github.com/epsilonlabs/Zeta</url>
+  <url>https://github.com/epsilonlabs/epsilon-sigma-builders</url>
   <inceptionYear>2019</inceptionYear>
 
   <licenses>
@@ -31,22 +31,34 @@
 
   <developers>
     <developer>
-      <name>Horacio Hoyos</name>
+      <name>Horacio Hoyos Rodriguez</name>
       <email>horacio.hoyos@york.ac.uk</email>
+      <organization>University of York</organization>
+      <organizationUrl>https://www.cs.york.ac.uk/</organizationUrl>
+    </developer>
+    <developer>
+      <name>Beatriz A. Sanchez</name>
+      <email>basp591@york.ac.uk</email>
+      <organization>University of York</organization>
+      <organizationUrl>https://www.cs.york.ac.uk/</organizationUrl>
+    </developer>
+    <developer>
+      <name>Sina Midani</name>
+      <email>sm1748@york.ac.uk</email>
       <organization>University of York</organization>
       <organizationUrl>https://www.cs.york.ac.uk/</organizationUrl>
     </developer>
   </developers>
 
   <scm>
-    <connection>scm:git:https://github.com/epsilonlabs/Zeta.git</connection>
-    <developerConnection>scm:git:https://github.com/epsilonlabs/Zeta.git</developerConnection>
-    <url>https://github.com/epsilonlabs/Zeta</url>
+    <connection>scm:git:https://github.com/epsilonlabs/epsilon-sigma-builders.git</connection>
+    <developerConnection>scm:git:https://github.com/epsilonlabs/epsilon-sigma-builders.git</developerConnection>
+    <url>https://github.com/epsilonlabs/epsilon-sigma-builders</url>
   </scm>
 
   <issueManagement>
     <system>github</system>
-    <url>https://github.com/epsilonlabs/Zeta/issues</url>
+    <url>https://github.com/epsilonlabs/epsilon-sigma-builders/issues</url>
   </issueManagement>
 
   <repositories>
