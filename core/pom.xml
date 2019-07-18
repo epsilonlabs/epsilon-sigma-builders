@@ -8,6 +8,6 @@
     <artifactId>epsilon-sigma-lambda</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>core</artifactId>
+  <artifactId>sigma-lambda-core</artifactId>
 
 </project>
