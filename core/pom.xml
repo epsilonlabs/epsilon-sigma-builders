@@ -9,10 +9,4 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>epsilon-sigma-builders-core</artifactId>
-
-  <packaging>jar</packaging>
-  <build>
-    <finalName>epsilon-${project.name}</finalName>
-  </build>
-
 </project>
