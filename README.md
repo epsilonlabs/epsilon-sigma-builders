@@ -1,5 +1,7 @@
-# Zeta
-Zeta provides a Model Builder API to ease configuration and creation of models used by Epsilon scripts when running in non-eclipse environments.
+![Epsilon-Sigma-Lambda](/epsilon-sigma-lambda.png?raw=true)
+
+# Epsilon Sigma Lambda
+Epsilon Sigma Lambda provides a Model Builder API to ease configuration and creation of models used by Epsilon scripts when running in non-eclipse environments.
 
 
 ## Supported versions
@@ -11,30 +13,30 @@ epsilon-sigma-executors | Epsilon   |
 
 ## Installation
 
-The easiest way is to add a maven depedendency to your project's pom:
+The easiest way is to add a maven dependency to your project's pom:
 
 ```
 <dependencies>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
-		<artifactId>zeta-core</artifactId>
-		<version>1.2.0</version>
+		<artifactId>epsilon-sigma-builders</artifactId>
+		<version>1.0.0</version>
 	</dependency>
 	<!-- Add specific model builders as required -->
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
-		<artifactId>zeta-emf</artifactId>
-		<version>1.2.0</version>
+		<artifactId>epsilon-sigma-builders-emf</artifactId>
+		<version>1.0.0</version>
 	</dependency>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
-		<artifactId>zeta-simulink</artifactId>
-		<version>1.2.0</version>
+		<artifactId>epsilon-sigma-builders-simulink</artifactId>
+		<version>1.0.0</version>
 	</dependency>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
-		<artifactId>zeta-spreadsheets</artifactId>
-		<version>1.2.0</version>
+		<artifactId>epsilon-sigma-builders-spreadsheets</artifactId>
+		<version>1.0.0</version>
 	</dependency>
 </dependencies>
 ```
@@ -97,4 +99,4 @@ Our Wiki provides detailed information on how to use the different builders.
 
 If you want to provide your own builder (e.g. for a model kind not supported here) the best place to start is in the *core* module to understand the base API. 
 Next, look at existing implementations to see how it can be implemented.
-Finally, if you want to share your builder you can follow the project's CONTRIBUIONS and submit a pull request.
+Finally, if you want to share your builder you can follow the project's CONTRIBUTIONS and submit a pull request.
