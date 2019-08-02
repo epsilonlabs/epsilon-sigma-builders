@@ -67,7 +67,7 @@ compile 'org.eclipse.epsilon.labs:epsilon-sigma-executors:xxx'
 
 ### Manually
 
-Alternatively, you can download and add the jars manually to your project. You can find the executable, sources and javadoc jars here: `http://repo1.maven.org/maven2/org/eclipse/epsilon/labs/epsilon-sigma-executors/`
+Alternatively, you can download and add the jars manually to your project. You can find the executable, sources and javadoc jars here: `http://repo1.maven.org/maven2/org/eclipse/epsilon/labs/epsilon-sigma-builders/`
 
 
 If you want to work with the SNAPSHOT versions, you need to add the OSS Sonatype repository to your pom:
