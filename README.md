@@ -13,33 +13,62 @@ epsilon-sigma-executors | Epsilon   |
 
 ## Installation
 
-The easiest way is to add a maven dependency to your project's pom:
+Using your prefered dependency manager:
+
+### Maven
 
 ```
 <dependencies>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.0-SNAPSHOT</version><!--bump-->
 	</dependency>
 	<!-- Add specific model builders as required -->
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders-emf</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.0-SNAPSHOT</version><!--bump-->
 	</dependency>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders-simulink</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.0-SNAPSHOT</version><!--bump-->
 	</dependency>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders-spreadsheets</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.0-SNAPSHOT</version><!--bump-->
 	</dependency>
 </dependencies>
 ```
+
+For other managers, change the version to the correct one:
+
+### Apache Ivy
+
+```
+<dependency org="org.eclipse.epsilon.labs" name="epsilon-sigma-executors" rev="xxx" />
+```
+
+### Groovy Grape
+
+```
+@Grapes( 
+@Grab(group='org.eclipse.epsilon.labs', module='epsilon-sigma-executors', version='xxx') 
+)
+```
+
+### Gradle/Grails
+
+```
+compile 'org.eclipse.epsilon.labs:epsilon-sigma-executors:xxx'
+```
+
+### Manually
+
+Alternatively, you can download and add the jars manually to your project. You can find the executable, sources and javadoc jars here: `http://repo1.maven.org/maven2/org/eclipse/epsilon/labs/epsilon-sigma-executors/`
+
 
 If you want to work with the SNAPSHOT versions, you need to add the OSS Sonatype repository to your pom:
 

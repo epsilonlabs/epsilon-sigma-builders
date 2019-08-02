@@ -14,9 +14,54 @@ We follow git-flow practices. There are two main branches:
 
 When preparing for a release, a release candidate branch under `releases/rc-[version]` should be crated.
 In that branch the version should be bumped to \[version\]-rc.
-After the release candidate have been finalized (i.e. update documentation, all version references, run integration tests), the version must be bumped to delete the *-rc*.
+After the release candidate have been finalized (i.e. update documentation, all version references, run integration tests), the version must be bumped to a stable version.
 Then, it should me merged with the *master*, and a tag must be created for the version.
 Creating and pushing the tag will signal de CI to release the stable version.
+After release, the master branch must be merged back into develop, and the version bumped to the next patch.
+
+## Bump verions
+The bump version step can be automated using [bump2version]().
+*bump2version* is a Python script that can bump project versions across multiple files.
+In this case we want to update the version in the parent and module poms, and in the readme.
+
+To use it you must have python installed in your system and get the package from pypi:
+
+```
+pip install --upgrade bump2version
+```
+
+### Release Candidate
+After creating the rc branch, the version can be bumped to rc:
+
+```
+bump2version release
+```
+
+This will change `[version]-SNAPSHOT` to `[version]-rc`.
+
+### Release
+
+Berfore merging to master:
+
+```
+bump2version release
+```
+
+This will change `[version]-rc` to `[version]`.
+
+### Develop
+
+After merging to develop:
+
+```
+bump2version patch
+```
+
+This will change `{major}.{minor}.{patch}` to `{major}.{minor}.{patch+1}-SNAPSHOT`.
+
+### Increase version
+
+Within develop, it can be used to bump any of the segments of the version.
 
 # Testing
 
