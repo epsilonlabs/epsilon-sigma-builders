@@ -41,10 +41,10 @@ This will change `[version]-SNAPSHOT` to `[version]-rc`.
 
 ### Release
 
-Berfore merging to master:
+Berfore merging to master (this will create the tag):
 
 ```
-bump2version release
+bump2version --tag release
 ```
 
 This will change `[version]-rc` to `[version]`.
