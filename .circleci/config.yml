@@ -9,7 +9,7 @@ executors:
     working_directory: ~/repo
 
 jobs:
-  build:
+  branches:
     executor: jdk-8
     steps:
       - checkout
@@ -24,12 +24,81 @@ jobs:
           paths:
             - ~/.m2
 
-      - run: mvn clean install
+      - run: mvn clean package -P branches,unit-tests
 
       - slack/status:
           fail_only: true
-          success_message: New version built
-          failure_message: Error on main branches build.
+          success_message: Branch passes compile + unit-tests
+          failure_message: Branch failed compile + unit-tests
+          webhook: https://hooks.slack.com/services/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
+
+  develop:
+    executor: jdk-8
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - m2-{{ checksum "pom.xml" }}
+            - m2-
+
+      - save_cache:
+          key: m2-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2
+
+      - run: mvn clean package -P unit-tests,sources
+
+      - slack/status:
+          fail_only: true
+          success_message: New development version built
+          failure_message: Error on develop branch build
+          webhook: https://hooks.slack.com/services/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
+
+  rc:
+    executor: jdk-8
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - m2-{{ checksum "pom.xml" }}
+            - m2-
+
+      - save_cache:
+          key: m2-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2
+
+      - run: mvn clean package -P unit-tests,integration-tests,sources,javadocs
+
+      - slack/status:
+          fail_only: true
+          success_message: Release candidate built
+          failure_message: Error on release candidate build
+          webhook: https://hooks.slack.com/services/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
+
+  tag:
+    executor: jdk-8
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - m2-{{ checksum "pom.xml" }}
+            - m2-
+
+      - save_cache:
+          key: m2-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2
+
+      - run: mvn clean package -P sources,javadocs
+
+      - slack/status:
+          fail_only: true
+          success_message: New development version built
+          failure_message: Error on develop branch build
           webhook: https://hooks.slack.com/services/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
 
   deploy:
@@ -57,14 +126,45 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  branches:
     jobs:
-      - build
+      - branches:
+          filters:
+            branches:
+              ignore:
+                - /rc-.*/
+                - develop
+                - master
+  release-candidate:
+    jobs:
+      - rc:
+          filters:
+            branches:
+              only:
+                - /rc-.*/
       - deploy:
           requires:
-            - build
+            - rc
+  develop:
+    jobs:
+      - develop:
           filters:
             branches:
               only:
                 - develop
-                - master
+      - deploy:
+          requires:
+            - develop
+
+  release:
+    jobs:
+      - tag:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - deploy:
+          requires:
+            - tag
+
