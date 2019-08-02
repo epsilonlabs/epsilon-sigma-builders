@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.eclipse.epsilon.labs</groupId>
     <artifactId>epsilon-sigma-builders</artifactId>
-    <version>1.0.0-SNAPSHOT</version><!--bump-->
+    <version>1.0.0-rc</version><!--bump-->
   </parent>
   <artifactId>epsilon-sigma-builders-simulink</artifactId>
 
