@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.eclipse.epsilon.labs</groupId>
     <artifactId>epsilon-sigma-builders</artifactId>
-    <version>1.0.0-rc</version><!--bump-->
+    <version>1.0.0</version><!--bump-->
   </parent>
   <artifactId>epsilon-sigma-builders-emf</artifactId>
 
