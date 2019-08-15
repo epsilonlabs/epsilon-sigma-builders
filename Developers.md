@@ -37,7 +37,9 @@ After creating the rc branch, the version can be bumped to rc:
 bump2version release
 ```
 
-This will change `[version]-SNAPSHOT` to `[version]-rc`.
+This will:
+ - change `[version]-SNAPSHOT` to `[version]-rc`.
+ - create a commit for the bump 
 
 ### Release
 
@@ -48,9 +50,14 @@ After the release candidate has been finalized, bump version to stable.
 bump2version --tag release
 ```
 
-This will change `[version]-rc` to `[version]`.
+This will:
+ - change `[version]-rc` to `[version]`.
+ - create a commit for the bump 
+ - create a tag for `[version]`.
 
-Afterwards, merge rc branch to master. 
+Afterwards, merge rc branch to master.
+
+**REMEMBER TO PUSH THE TAG!**
 
 ### Develop
 
@@ -59,8 +66,10 @@ Merge master to develop and then bump to next version:
 ```
 bump2version patch
 ```
-This will create a tag for `{major}.{minor}.{patch}`.
-This will change `{major}.{minor}.{patch}` to `{major}.{minor}.{patch+1}-SNAPSHOT`.
+
+This will:
+ - change `{major}.{minor}.{patch}` to `{major}.{minor}.{patch+1}-SNAPSHOT`.
+ - create a commit for the bump 
 
 ### Increase version
 
