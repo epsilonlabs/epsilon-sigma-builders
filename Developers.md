@@ -12,7 +12,7 @@ We follow git-flow practices. There are two main branches:
 - master: stable releases (i.e. versions with no qualifiers)
 - develop: latest development version (i.e. SNAPSHOT qualifier)
 
-When preparing for a release, a release candidate branch under `releases/rc-[version]` should be crated.
+When preparing for a release, a release candidate branch under `releases/rc-[version]` should be created.
 In that branch the version should be bumped to \[version\]-rc.
 After the release candidate have been finalized (i.e. update documentation, all version references, run integration tests), the version must be bumped to a stable version.
 Then, it should me merged with the *master*, and a tag must be created for the version.
