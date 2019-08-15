@@ -2,7 +2,7 @@
 
 We use semantic versioning and SNAPSHOT as qualifier for the latest development version.
 
-Tags are named v.\[version\].
+Tags are named v\[version\].
 
 
 # Branching
@@ -45,7 +45,7 @@ After the release candidate has been finalized, bump version to stable.
 **Note:** The rc version might have patch version increases.
 
 ```
-bump2version release
+bump2version --tag release
 ```
 
 This will change `[version]-rc` to `[version]`.
@@ -54,10 +54,10 @@ Afterwards, merge rc branch to master.
 
 ### Develop
 
-Merge master to develop and then bump to next version, creating a tag for the release version:
+Merge master to develop and then bump to next version:
 
 ```
-bump2version --tag patch
+bump2version patch
 ```
 This will create a tag for `{major}.{minor}.{patch}`.
 This will change `{major}.{minor}.{patch}` to `{major}.{minor}.{patch+1}-SNAPSHOT`.
