@@ -41,22 +41,25 @@ This will change `[version]-SNAPSHOT` to `[version]-rc`.
 
 ### Release
 
-Berfore merging to master (this will create the tag):
+After the release candidate has been finalized, bump version to stable.
+**Note:** The rc version might have patch version increases.
 
 ```
-bump2version --tag release
+bump2version release
 ```
 
 This will change `[version]-rc` to `[version]`.
 
+Afterwards, merge rc branch to master. 
+
 ### Develop
 
-After merging to develop:
+Merge master to develop and then bump to next version, creating a tag for the release version:
 
 ```
-bump2version patch
+bump2version --tag patch
 ```
-
+This will create a tag for `{major}.{minor}.{patch}`.
 This will change `{major}.{minor}.{patch}` to `{major}.{minor}.{patch+1}-SNAPSHOT`.
 
 ### Increase version
