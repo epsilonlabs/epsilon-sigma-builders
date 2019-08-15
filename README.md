@@ -22,23 +22,23 @@ Using your prefered dependency manager:
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders</artifactId>
-		<version>2.0.0-SNAPSHOT</version><!--bump-->
+		<version>2.0.0-rc</version><!--bump-->
 	</dependency>
 	<!-- Add specific model builders as required -->
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders-emf</artifactId>
-		<version>2.0.0-SNAPSHOT</version><!--bump-->
+		<version>2.0.0-rc</version><!--bump-->
 	</dependency>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders-simulink</artifactId>
-		<version>2.0.0-SNAPSHOT</version><!--bump-->
+		<version>2.0.0-rc</version><!--bump-->
 	</dependency>
 	<dependency>
    		<groupId>org.eclipse.epsilon.labs</groupId>
 		<artifactId>epsilon-sigma-builders-spreadsheets</artifactId>
-		<version>2.0.0-SNAPSHOT</version><!--bump-->
+		<version>2.0.0-rc</version><!--bump-->
 	</dependency>
 </dependencies>
 ```
