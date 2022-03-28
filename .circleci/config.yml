@@ -1,11 +1,11 @@
 version: 2.1
 orbs:
-  slack: cimg/slack@3.2.0
+  slack: circleci/slack@4.8.3
 
 executors:
   jdk-8:
     docker:
-      - image: cimg/openjdk:8-jdk
+      - image: cimg/openjdk:8.0.322
     working_directory: ~/repo
 
 jobs:
