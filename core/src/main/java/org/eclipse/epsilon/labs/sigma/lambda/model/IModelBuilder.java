@@ -87,5 +87,5 @@ public interface IModelBuilder<M extends IModel, T extends IModelBuilder<M, T>> 
      * @return The M model configured based on the provided values.
      * @throws Exception
      */
-    M build() throws Exception;
+    M build() throws ModelBuilderException;
 }

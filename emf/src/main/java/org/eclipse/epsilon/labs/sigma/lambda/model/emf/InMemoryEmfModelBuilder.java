@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
+import org.eclipse.epsilon.labs.sigma.lambda.model.ModelBuilderException;
 
 /**
  * An EMF model builder for InMemory EMF models.
@@ -44,18 +45,22 @@ public class InMemoryEmfModelBuilder extends AbstractEmfModelBuilder<InMemoryEmf
 	}
 
 	@Override
-	public InMemoryEmfModel build() throws Exception {
+	public InMemoryEmfModel build() throws ModelBuilderException {
 		if ((!ePackages.isEmpty()) && (!nsUris.isEmpty())) {
 			System.out.println("Both EPackages and nsURIs were providede, only EPackages will be used.");
 		}
 		if (name == null) {
 			name = "Model";
 		}
-		if (!ePackages.isEmpty()) {
-			return new InMemoryEmfModel(name, resource, ePackages.toArray(new EPackage[0]));
-		}
-		else {
-			return new InMemoryEmfModel(name, resource, nsUris.toArray(new String[0]));
+		try {
+			if (!ePackages.isEmpty()) {
+				return new InMemoryEmfModel(name, resource, ePackages.toArray(new EPackage[0]));
+			}
+			else {
+				return new InMemoryEmfModel(name, resource, nsUris.toArray(new String[0]));
+			}
+		} catch(Exception e) {
+			throw new ModelBuilderException("EMF", e.getMessage());
 		}
 	}
 

@@ -15,8 +15,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.eclipse.epsilon.emc.spreadsheets.SpreadsheetReference;
 import org.eclipse.epsilon.emc.spreadsheets.SpreadsheetWorksheet;
 import org.eclipse.epsilon.emc.spreadsheets.excel.ExcelModel;
+import org.eclipse.epsilon.labs.sigma.lambda.model.ModelBuilderException;
 import org.eclipse.epsilon.labs.sigma.lambda.model.spreadsheets.SpreadsheetModelBuilder;
-
 
 /**
  * Implementation of {@link IExcelModelBuilder}
@@ -35,49 +35,57 @@ public class ExcelModelBuilder extends SpreadsheetModelBuilder<ExcelModel, Excel
 	public ExcelModelBuilder() {
 		super();
 	}
-	
+
 	@Override
-	public ExcelModel build() throws Exception {
-		ExcelModel model = new ExcelModel();
-		// From Model
-		model.setName(this.name);
-		model.setReadOnLoad(this.readOnLoad);
-		model.setStoredOnDisposal(this.storeOnDisposal);
-		// From Spreadsheet Model
-		for (SpreadsheetReference reference : this.references) {
-			model.addReference(reference);
+	public ExcelModel build() throws ModelBuilderException {
+		ExcelModel model = null;
+		try {
+			model = new ExcelModel();
+			// From Model
+			model.setName(this.name);
+			model.setReadOnLoad(this.readOnLoad);
+			model.setStoredOnDisposal(this.storeOnDisposal);
+			// From Spreadsheet Model
+			for (SpreadsheetReference reference : this.references) {
+				model.addReference(reference);
+			}
+			for (SpreadsheetWorksheet worksheet : this.worksheets) {
+				model.addWorksheet(worksheet);
+			}
+			// From Excel Spreadsheet Model
+			model.setConfigurationFile(this.configurationFile.getAbsolutePath());
+			model.setPassword(this.password);
+			model.setSpreadsheetFile(this.spreadsheetFile.getAbsolutePath());
+		} catch (Exception e) {
+			throw new ModelBuilderException("EMF", e.getMessage());
 		}
-		for (SpreadsheetWorksheet worksheet : this.worksheets) {
-			model.addWorksheet(worksheet);
-		}
-		// From Excel Spreadsheet Model
-		model.setConfigurationFile(this.configurationFile.getAbsolutePath());
-		model.setPassword(this.password);
-		model.setSpreadsheetFile(this.spreadsheetFile.getAbsolutePath());
-		
 		return model;
 	}
 
 	@Override
-	public ExcelModelBuilder setWorkbook(Workbook workbook) {
+	public ExcelModelBuilder setWorkbook(
+		Workbook workbook) {
 		this.workbook = workbook;
 		return self();
 	}
 
 	@Override
-	public ExcelModelBuilder setSpreadsheetFile(File spreadsheetFile) {
+	public ExcelModelBuilder setSpreadsheetFile(
+		File spreadsheetFile) {
 		this.spreadsheetFile = spreadsheetFile;
 		return self();
 	}
 
 	@Override
-	public ExcelModelBuilder setConfgurationFile(File configurationFile) {
+	public ExcelModelBuilder setConfgurationFile(
+		File configurationFile) {
 		this.configurationFile = configurationFile;
 		return self();
 	}
 
 	@Override
-	public ExcelModelBuilder setPassword(String password) {
+	public ExcelModelBuilder setPassword(
+		String password) {
 		this.password = password;
 		return self();
 	}

@@ -13,6 +13,7 @@ import java.io.File;
 
 import org.eclipse.epsilon.emc.simulink.model.SimulinkModel;
 import org.eclipse.epsilon.labs.sigma.lambda.model.CachedModelBuilder;
+import org.eclipse.epsilon.labs.sigma.lambda.model.ModelBuilderException;
 
 /**
  * Implementation of the {@link SimulinkModelBuilder} interface.
@@ -22,57 +23,67 @@ import org.eclipse.epsilon.labs.sigma.lambda.model.CachedModelBuilder;
  *
  */
 public class SimulinkModelBuilder extends CachedModelBuilder<SimulinkModel, SimulinkModelBuilder>
-        implements ISimulinkModelBuilder<SimulinkModelBuilder> {
+		implements ISimulinkModelBuilder<SimulinkModelBuilder> {
 
-    private String engineJarPath;
+	private String engineJarPath;
 	private String libraryPath;
 	private File file;
 	private boolean showEditor = true;
 
-    public SimulinkModelBuilder() {}
+	public SimulinkModelBuilder() {
+		super();
+	}
 
-    @Override
-	public SimulinkModelBuilder engineJarPath(String engineJarPath) {
-        this.engineJarPath = engineJarPath;
-        return self();
-    }
+	@Override
+	public SimulinkModelBuilder engineJarPath(
+		String engineJarPath) {
+		this.engineJarPath = engineJarPath;
+		return self();
+	}
 
-    @Override
-    public SimulinkModelBuilder showMatlabEditor(boolean hiddenEditor) {
-        this.showEditor = hiddenEditor;
-        return self();
-    }
+	@Override
+	public SimulinkModelBuilder showMatlabEditor(
+		boolean hiddenEditor) {
+		this.showEditor = hiddenEditor;
+		return self();
+	}
 
-    @Override
-    public SimulinkModelBuilder libraryPath(String libraryPath) {
-        this.libraryPath = libraryPath;
-        return self();
-    }
+	@Override
+	public SimulinkModelBuilder libraryPath(
+		String libraryPath) {
+		this.libraryPath = libraryPath;
+		return self();
+	}
 
-    @Override
-	public SimulinkModelBuilder file(File file) {
-        this.file = file;
-        return self();
-    }
+	@Override
+	public SimulinkModelBuilder file(
+		File file) {
+		this.file = file;
+		return self();
+	}
 
-    @Override
-    public SimulinkModel build() throws Exception {
-        SimulinkModel model = new SimulinkModel();
-        model.setName(name);
-        model.setReadOnLoad(this.readOnLoad);
-        model.setStoredOnDisposal(this.storeOnDisposal);
-        model.setCachingEnabled(this.useCache);
-        model.setEngineJarPath(this.engineJarPath);
-        model.setLibraryPath(this.libraryPath);
-        model.setShowInMatlabEditor(this.showEditor);
-        model.setFile(this.file);
-        return model;
-    }
+	@Override
+	public SimulinkModel build() throws ModelBuilderException {
+		SimulinkModel model = null;
+		try {
+			model = new SimulinkModel();
+			model.setName(name);
+			model.setReadOnLoad(this.readOnLoad);
+			model.setStoredOnDisposal(this.storeOnDisposal);
+			model.setCachingEnabled(this.useCache);
+			model.setEngineJarPath(this.engineJarPath);
+			model.setLibraryPath(this.libraryPath);
+			model.setOpenOnLoad(this.showEditor);
+			model.setFile(this.file);
+		} catch (Exception e) {
+			throw new ModelBuilderException("EMF", e.getMessage());
+		}
+		return model;
+	}
 
 	@Override
 	public SimulinkModelBuilder self() {
 		return this;
 	}
-
 
 }
