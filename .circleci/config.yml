@@ -26,11 +26,12 @@ jobs:
 
       - run: mvn clean package -P branches,unit-tests
 
-      - slack/status:
-          fail_only: true
-          success_message: Branch passes compile + unit-tests
-          failure_message: Branch failed compile + unit-tests
-          webhook: https://hooks.slack.com/services/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
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: basic_success_1
 
   develop:
     executor: jdk-8
@@ -49,11 +50,12 @@ jobs:
 
       - run: mvn clean package -P unit-tests,sources
 
-      - slack/status:
-          fail_only: true
-          success_message: New development version built
-          failure_message: Error on develop branch build
-          webhook: https://hooks.slack.com/services/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
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: basic_success_1
 
   rc:
     executor: jdk-8
@@ -72,11 +74,12 @@ jobs:
 
       - run: mvn clean package -P unit-tests,integration-tests,sources
 
-      - slack/status:
-          fail_only: true
-          success_message: Release candidate built
-          failure_message: Error on release candidate build
-          webhook: https://hooks.slack.com/services/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
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: basic_success_1
 
   tag:
     executor: jdk-8
@@ -95,11 +98,12 @@ jobs:
 
       - run: mvn clean package -P sources,javadoc
 
-      - slack/status:
-          fail_only: true
-          success_message: New development version built
-          failure_message: Error on develop branch build
-          webhook: https://hooks.slack.com/services/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
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
 
   deploy:
     executor: jdk-8
@@ -118,11 +122,56 @@ jobs:
 
       - run: mvn deploy -s .circleci/settings.xml -P sources,javadoc -DskipTest=true
 
-      - slack/status:
-          only_for_branches: develop,master
-          success_message: New version deployed
-          failure_message: Error deploying new version
-          webhook: https://hooks.slack.com/services/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
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          custom: |
+          {
+            "text": "CircleCI job succeeded!",
+            "blocks": [
+                {
+                    "type": "header",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Deployment Successful! :tada:",
+                        "emoji": true
+                    }
+                },
+                {
+                    "type": "section",
+                    "fields": [
+                        {
+                            "type": "mrkdwn",
+                            "text": "*Project*: $CIRCLE_PROJECT_REPONAME"
+                        },
+                        {
+                            "type": "mrkdwn",
+                            "text": "*When*: $(date +'%m/%d/%Y %T')"
+                        },
+                    ],
+                    "accessory": {
+                        "type": "image",
+                        "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                        "alt_text": "CircleCI logo"
+                    }
+                },
+                {
+                    "type": "actions",
+                    "elements": [
+                        {
+                            "type": "button",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "View Job"
+                            },
+                            "url": "${CIRCLE_BUILD_URL}"
+                        }
+                    ]
+                }
+            ]
+        }
 
 workflows:
   version: 2
