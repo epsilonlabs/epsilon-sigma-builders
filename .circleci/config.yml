@@ -178,6 +178,7 @@ workflows:
   branches:
     jobs:
       - branches:
+          context: Slack
           filters:
             branches:
               ignore:
@@ -187,33 +188,39 @@ workflows:
   release-candidate:
     jobs:
       - rc:
+          context: Slack
           filters:
             branches:
               only:
                 - /rc-.*/
       - deploy:
+          context: Slack
           requires:
             - rc
   develop:
     jobs:
       - develop:
+          context: Slack
           filters:
             branches:
               only:
                 - develop
       - deploy:
+          context: Slack
           requires:
             - develop
 
   release:
     jobs:
       - tag:
+          context: Slack
           filters:
             tags:
               only: /^v.*/
             branches:
               ignore: /.*/
       - deploy:
+          context: Slack
           requires:
             - tag
           filters:
