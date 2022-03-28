@@ -9,6 +9,10 @@ executors:
     working_directory: ~/repo
 
 jobs:
+  env:
+    executor: jdk-8
+    steps:
+      - run: touch $BASH_ENV
   branches:
     executor: jdk-8
     steps:
@@ -177,8 +181,11 @@ workflows:
   version: 2
   branches:
     jobs:
+      - env
       - branches:
           context: Slack
+          requires:
+            - env
           filters:
             branches:
               ignore:
@@ -187,8 +194,11 @@ workflows:
                 - master
   release-candidate:
     jobs:
+      - env
       - rc:
           context: Slack
+          requires:
+            - env
           filters:
             branches:
               only:
@@ -199,8 +209,11 @@ workflows:
             - rc
   develop:
     jobs:
+      - env
       - develop:
           context: Slack
+          requires:
+            - env
           filters:
             branches:
               only:
@@ -212,8 +225,11 @@ workflows:
 
   release:
     jobs:
+      - env
       - tag:
           context: Slack
+          requires:
+            - env
           filters:
             tags:
               only: /^v.*/
