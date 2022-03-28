@@ -13,13 +13,13 @@
   <dependencies>
     <dependency>
       <groupId>org.eclipse.epsilon</groupId>
-      <artifactId>epsilon-emf</artifactId>
+      <artifactId>org.eclipse.epsilon.emc.emf</artifactId>
       <version>${epsilon.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.epsilon.labs</groupId>
       <artifactId>epsilon-sigma-builders-core</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+       <version>2.0.1-SNAPSHOT</version><!--bump-->
     </dependency>
   </dependencies>
 </project>
