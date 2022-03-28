@@ -128,50 +128,50 @@ jobs:
       - slack/notify:
           event: pass
           custom: |
-          {
-            "text": "CircleCI job succeeded!",
-            "blocks": [
-                {
-                    "type": "header",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Deployment Successful! :tada:",
-                        "emoji": true
-                    }
-                },
-                {
-                    "type": "section",
-                    "fields": [
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Project*: $CIRCLE_PROJECT_REPONAME"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "*When*: $(date +'%m/%d/%Y %T')"
-                        },
-                    ],
-                    "accessory": {
-                        "type": "image",
-                        "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
-                        "alt_text": "CircleCI logo"
-                    }
-                },
-                {
-                    "type": "actions",
-                    "elements": [
-                        {
-                            "type": "button",
-                            "text": {
-                                "type": "plain_text",
-                                "text": "View Job"
-                            },
-                            "url": "${CIRCLE_BUILD_URL}"
+              {
+                "text": "CircleCI job succeeded!",
+                "blocks": [
+                    {
+                        "type": "header",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Deployment Successful! :tada:",
+                            "emoji": true
                         }
-                    ]
-                }
-            ]
-        }
+                    },
+                    {
+                        "type": "section",
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "*Project*: $CIRCLE_PROJECT_REPONAME"
+                            },
+                            {
+                                "type": "mrkdwn",
+                                "text": "*When*: $(date +'%m/%d/%Y %T')"
+                            },
+                        ],
+                        "accessory": {
+                            "type": "image",
+                            "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                            "alt_text": "CircleCI logo"
+                        }
+                    },
+                    {
+                        "type": "actions",
+                        "elements": [
+                            {
+                                "type": "button",
+                                "text": {
+                                    "type": "plain_text",
+                                    "text": "View Job"
+                                },
+                                "url": "${CIRCLE_BUILD_URL}"
+                            }
+                        ]
+                    }
+                ]
+            }
 
 workflows:
   version: 2
