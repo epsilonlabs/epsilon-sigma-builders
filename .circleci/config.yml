@@ -122,9 +122,9 @@ jobs:
       - attach_workspace:
           at: .
 
-      - run: echo -e $GPG_KEY | gpg --import --no-tty --batch --yes
+      - run: echo -e $KT_PGP_KEY | gpg --import --no-tty --batch --yes
 
-      - run: mvn deploy -s .circleci/settings.xml -P sources,javadoc -DskipTest=true
+      - run: mvn deploy -s .circleci/settings.xml -P sources,javadoc,ossrh -DskipTest=true
 
       - slack/notify:
           event: fail
