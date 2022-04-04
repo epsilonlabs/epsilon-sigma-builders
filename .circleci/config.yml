@@ -122,7 +122,7 @@ jobs:
       - attach_workspace:
           at: .
 
-      - run: echo -e $KT_PGP_KEY | gpg --import --no-tty --batch --yes
+      - run: echo "$KT_PGP_KEY" | gpg --import --no-tty --batch --yes
 
       - run: mvn deploy -s .circleci/settings.xml -P sources,javadoc,ossrh -DskipTest=true
 
