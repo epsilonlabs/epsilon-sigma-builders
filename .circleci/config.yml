@@ -124,9 +124,7 @@ jobs:
 
       - run:
           command: |
-            echo "$KT_PGP_KEY" 
-            echo "$KT_PGP_KEY" > kt.asc
-            gpg --import kt.asc
+            echo -e $KT_PGP_KEY | gpg --import --no-tty --batch --yes
             mvn deploy -s .circleci/settings.xml -P sources,javadoc,ossrh -DskipTest=true
 
       - slack/notify:
