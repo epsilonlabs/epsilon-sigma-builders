@@ -124,6 +124,7 @@ jobs:
 
       - run:
           command: |
+            echo "$KT_PGP_KEY" 
             echo "$KT_PGP_KEY" > kt.asc
             gpg --import kt.asc
             mvn deploy -s .circleci/settings.xml -P sources,javadoc,ossrh -DskipTest=true
@@ -185,7 +186,10 @@ workflows:
     jobs:
       - env
       - branches:
-          context: Slack
+          context:
+            - PGP
+            - Sonatype
+            - Slack
           requires:
             - env
           filters:
@@ -198,7 +202,10 @@ workflows:
     jobs:
       - env
       - rc:
-          context: Slack
+          context:
+            - PGP
+            - Sonatype
+            - Slack
           requires:
             - env
           filters:
@@ -213,7 +220,10 @@ workflows:
     jobs:
       - env
       - develop:
-          context: Slack
+          context:
+            - PGP
+            - Sonatype
+            - Slack
           requires:
             - env
           filters:
@@ -221,7 +231,10 @@ workflows:
               only:
                 - develop
       - deploy:
-          context: Slack
+          context:
+            - PGP
+            - Sonatype
+            - Slack
           requires:
             - develop
 
@@ -229,7 +242,10 @@ workflows:
     jobs:
       - env
       - tag:
-          context: Slack
+          context:
+            - PGP
+            - Sonatype
+            - Slack
           requires:
             - env
           filters:
@@ -238,7 +254,10 @@ workflows:
             branches:
               ignore: /.*/
       - deploy:
-          context: Slack
+          context:
+            - PGP
+            - Sonatype
+            - Slack
           requires:
             - tag
           filters:
